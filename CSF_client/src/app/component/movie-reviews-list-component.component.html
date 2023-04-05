@@ -1,0 +1,39 @@
+<h1>Search Result</h1>
+
+<div *ngIf="true">
+<table *ngFor="let x of results">
+
+          <tr *ngIf="x.multimedia.src != null; else phimage">
+            <img src="{{x.multimedia.src}}" width="200"></tr>  
+
+        <ng-template #phimage>
+            <img src="/assets/images/placeholder.jpg">
+        </ng-template>    
+        
+        <tr>
+            <br>
+            <label>Movie Title: </label>
+            <td><a href = "{{x.link.url}}">{{x.display_title}}</a> ({{x.mpaa_rating}})</td>
+        </tr>
+        <tr>
+            <label>Headline: </label>
+            <td>{{x.headline}}</td>
+        </tr>
+        <tr>
+            <label>Summary: </label>
+            <td>{{x.summary_short}}</td>
+        </tr>
+        <tr>
+            <td>Comments: Number of comments</td>
+        </tr>
+        <br>
+        <button type="button" (click)="postComment(x.display_title)">Comment</button>
+        <hr>
+        
+</table>
+</div>
+
+<div *ngIf="results == null">
+    Your search produces no result.
+</div>
+<button type="button" [routerLink]="['..']">Back</button>

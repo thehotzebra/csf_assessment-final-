@@ -1,0 +1,29 @@
+<h1>Post comment for {{title}}</h1>
+
+<form [formGroup]="commentForm" (ngSubmit)="postComment()">
+    <table>
+        <label>Name:</label>
+            <tr>
+                <td>
+                    <input type="text" formControlName="name">
+                </td>
+            </tr>
+        <label>Rating:</label>
+            <tr>
+                <td>
+                    <input type="number" formControlName="rating">
+                </td>
+            </tr>
+        <label>Comments: </label>
+            <tr>
+                <td>
+                    <textarea cols="30" rows="10" formControlName="comment" placeholder="Type here"></textarea>
+                </td>
+            </tr>
+    </table>
+</form>
+
+<button type="button" [routerLink]="['..']">Back</button>
+
+<button type="submit" [disabled]="commentForm.invalid" [routerLink]="['/movie']">Post</button>
+
